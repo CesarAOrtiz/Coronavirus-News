@@ -66,7 +66,7 @@ function activateLinks() {
     if (document.getElementById("close")) {
         document.getElementById("close").addEventListener("click", (e) => {
             e.preventDefault()
-            document.getElementById('modal').style.display = 'none'
+            document.getElementById('modal-container').style.display = 'none'
         }, false);
     }
 
@@ -102,6 +102,7 @@ function createBlocks(array) {
             <li>${object.Total_Recovered}</li>
         </ul>
     </div>`;
+
     }
     return table
 }
@@ -182,5 +183,5 @@ function showDetails(e) {
             </tr>
         </tbody>`;
     document.getElementById("table").innerHTML = table;
-    document.getElementById("modal").style.display = 'block';
+    document.getElementById("modal-container").style.display = 'block';
 }
