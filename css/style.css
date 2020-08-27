@@ -62,7 +62,7 @@ body {
 /* contenedor del cuerpo de la pagina */
 
 #search-bar {
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
     width: 90%;
     max-width: 800px;
@@ -92,7 +92,7 @@ input[type=submit] {
     max-width: 800px;
     padding: 10px 0px;
     margin: 30px auto;
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 20px;
 }
 
 
@@ -161,7 +161,7 @@ li {
 
 /* ventana modal para mostrar mas datos */
 
-#container {
+#modal-container {
     background-color: rgba(0, 0, 0, .8);
     position: fixed;
     top: 0;
@@ -223,7 +223,7 @@ table {
     padding: 5px;
     width: 30%;
     text-decoration: none;
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 20px;
     min-width: 200px;
 }
 
