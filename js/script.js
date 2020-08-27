@@ -1,3 +1,5 @@
+var countries;
+
 window.addEventListener('DOMContentLoaded', storage, false);
 
 function storage() {
@@ -5,7 +7,8 @@ function storage() {
         var data = JSON.parse(localStorage.getItem('dataCovid'))
         var utc = new Date().toJSON().slice(0, 10)
         if (data[0].Date == String(utc)) {
-            showAll(data)
+            countries = data
+            showAll()
         }
     } else {
         callAPI()
@@ -43,38 +46,42 @@ function saveResponse(response) {
         })
         iter++
     }
+    countries = data
     localStorage.setItem('dataCovid', JSON.stringify(data))
-    return data
 }
 
-function showAll(data) {
-    table = createBlocks(data);
+function showAll() {
+    table = createBlocks(countries);
     document.getElementById("sub-container").innerHTML = table
     document.getElementById('id_Country').value = ''
-    activateLinks(data)
+    activateLinks()
 }
 
-function activateLinks(data) {
+function activateLinks() {
     const objects = document.querySelectorAll(".detail-link")
     for (let object of objects) {
-        object.addEventListener("click", (e) => { showDetails(e, data) }, false);
+        object.addEventListener("click", showDetails, false);
     }
 
     if (document.getElementById("close")) {
         document.getElementById("close").addEventListener("click", (e) => {
             e.preventDefault()
-            document.getElementById('container').style.display = 'none'
+            document.getElementById('modal').style.display = 'none'
         }, false);
     }
 
     document.getElementById('id_Country').placeholder = 'Search';
-    document.getElementById("id_Country").addEventListener("keyup", (e) => { showSearch(e, data) }, false);
+    document.getElementById("id_Country").addEventListener("keyup", showSearch, false);
 
-    document.getElementById("search").addEventListener("click", (e) => { showSearch(e, data) }, false);
+    document.getElementById("search").addEventListener("click", showSearch, false);
 
     document.getElementById("index").addEventListener("click", (e) => {
         e.preventDefault()
-        showAll(data)
+        const objects = document.querySelectorAll(".block p")
+        for (let object of objects) {
+            block = object.parentNode.style.display = 'block'
+        }
+        document.getElementById('id_Country').value = ''
     }, false);
 }
 
@@ -96,38 +103,36 @@ function createBlocks(array) {
         </ul>
     </div>`;
     }
-    table += `
-    <div id="container" style="display: none;">
-        <div id="details">
-            <table id="table"></table>
-            <a href="#" id="close">X</a>
-        </div>
-    </div>`
     return table
 }
 
-function showSearch(event, data) {
-    event.preventDefault();
+function showSearch(e) {
+    e.preventDefault();
     let search = document.getElementById("id_Country").value.toLowerCase().trim();
     var results = []
-    for (let object of data) {
+    for (let object of countries) {
         if (object.Country.toLowerCase().includes(search)) {
-            results.push(object)
+            results.push(String(object.id))
         }
     }
-    if (results.length > 0) {
-        table = createBlocks(results);
-    } else {
-        table = "<h2>Search Not Found</h2>"
+    const objects = document.querySelectorAll(".block p")
+    for (let object of objects) {
+        block = object.parentNode
+        if (results.includes(object.id)) {
+            block.style.display = 'block'
+        } else {
+            block.style.display = 'none'
+        }
     }
-    document.getElementById("sub-container").innerHTML = table
-    activateLinks(data)
+    if (results.length == 0) {
+        document.getElementById("not-found").style.display = 'block'
+    } else { document.getElementById("not-found").style.display = 'none' }
 }
 
-function showDetails(event, data) {
-    event.preventDefault();
+function showDetails(e) {
+    e.preventDefault();
 
-    object = data[event.currentTarget.id]
+    object = countries[e.currentTarget.id]
 
     table = `
         <thead>
@@ -177,5 +182,5 @@ function showDetails(event, data) {
             </tr>
         </tbody>`;
     document.getElementById("table").innerHTML = table;
-    document.getElementById("container").style.display = 'block';
+    document.getElementById("modal").style.display = 'block';
 }
