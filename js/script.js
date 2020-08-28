@@ -9,6 +9,8 @@ function storage() {
         if (data[0].Date == String(utc)) {
             countries = data
             showAll()
+        } else {
+        callAPI()
         }
     } else {
         callAPI()
