@@ -1,7 +1,5 @@
 var countries;
 
-window.addEventListener('DOMContentLoaded', storage, false);
-
 function storage() {
     if (localStorage.getItem('dataCovid')) {
         var data = JSON.parse(localStorage.getItem('dataCovid'))
