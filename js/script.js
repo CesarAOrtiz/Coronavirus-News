@@ -53,7 +53,6 @@ function saveResponse(response) {
 function showAll() {
     table = createBlocks(countries);
     document.getElementById("sub-container").innerHTML = table
-    document.getElementById('id_Country').value = ''
     activateLinks()
 }
 
@@ -101,8 +100,7 @@ function createBlocks(array) {
             <li>${object.Total_Deaths}</li>
             <li>${object.Total_Recovered}</li>
         </ul>
-    </div>`;
-
+    </div>`
     }
     return table
 }
@@ -132,9 +130,7 @@ function showSearch(e) {
 
 function showDetails(e) {
     e.preventDefault();
-
     object = countries[e.currentTarget.id]
-
     table = `
         <thead>
             <tr>
@@ -181,7 +177,7 @@ function showDetails(e) {
                 <td>Current Infected</td>
                 <td class="digits">${object.Current_Infected}</td>
             </tr>
-        </tbody>`;
-    document.getElementById("table").innerHTML = table;
+        </tbody>`
+    document.getElementById("table").innerHTML = table
     document.getElementById("modal-container").style.display = 'block';
 }
