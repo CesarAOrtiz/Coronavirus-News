@@ -8,7 +8,7 @@ function storage() {
             countries = data
             showAll()
         } else {
-        callAPI()
+            callAPI()
         }
     } else {
         callAPI()
@@ -85,9 +85,9 @@ function activateLinks() {
 }
 
 function createBlocks(array) {
-    let table = "";
+    let html = "";
     for (let object of array) {
-        table += `
+        html += `
     <div class="block">
         <p id="${object.id}" class='detail-link'>${object.Country}</p>
         <ul class="header">
@@ -102,7 +102,7 @@ function createBlocks(array) {
         </ul>
     </div>`
     }
-    return table
+    return html
 }
 
 function showSearch(e) {
