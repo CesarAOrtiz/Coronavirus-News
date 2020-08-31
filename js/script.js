@@ -29,10 +29,8 @@ const callAPI = async() => {
 }
 
 function saveResponse(response) {
-    var data = []
-    var iter = 0
-    for (let object of response.Countries) {
-        data.push({
+    const data = response.map((object, index) => {
+        return {
             Country: object.Country,
             Current_Infected: (object.TotalConfirmed - (object.TotalDeaths + object.TotalRecovered)).toLocaleString("es-MX"),
             Total_Confirmed: object.TotalConfirmed.toLocaleString("es-MX"),
@@ -44,10 +42,9 @@ function saveResponse(response) {
             Death_Rate: ((object.TotalDeaths / object.TotalConfirmed) * 100).toFixed(2),
             Recovery_Rate: ((object.TotalRecovered / object.TotalConfirmed) * 100).toFixed(2),
             Date: String(object.Date).slice(0, 10),
-            id: iter
-        })
-        iter++
-    }
+            id: index
+        }
+    })
     countries = data
     localStorage.setItem('dataCovid', JSON.stringify(data))
 }
