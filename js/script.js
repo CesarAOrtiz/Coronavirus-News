@@ -110,12 +110,8 @@ function createBlocks(array) {
 function showSearch(e) {
     e.preventDefault();
     let search = document.getElementById("id_Country").value.toLowerCase().trim();
-    var results = []
-    for (let object of countries) {
-        if (object.Country.toLowerCase().includes(search)) {
-            results.push(String(object.id))
-        }
-    }
+    const coincidense = countries.filter(object => object.Country.toLowerCase().includes(search))
+    const results = coincidense.map(object => String(object.id))
     const objects = document.querySelectorAll(".block p")
     for (let object of objects) {
         block = object.parentNode
