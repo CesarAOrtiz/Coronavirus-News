@@ -15,15 +15,17 @@ function storage() {
     }
 }
 
-function callAPI() {
-    fetch("https://api.covid19api.com/summary", {
+const callAPI = async() => {
+    try {
+        const response = await fetch("https://api.covid19api.com/summary", {
             cache: 'no-cache'
         })
-        .then(response => { return response.json() })
-        .then(saveResponse)
-        .then(document.getElementById("sub-container").innerHTML = "<h2>Cargando...<h2>")
-        .then(showAll)
-        .catch((err) => { console.log(err) })
+        const data = await response.json()
+        saveResponse(data)
+        showAll()
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 function saveResponse(response) {
