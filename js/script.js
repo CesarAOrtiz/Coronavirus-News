@@ -64,12 +64,11 @@ function activateLinks() {
         object.addEventListener("click", showDetails, false);
     }
 
-    if (document.getElementById("close")) {
-        document.getElementById("close").addEventListener("click", (e) => {
-            e.preventDefault()
-            document.getElementById('modal-container').style.display = 'none'
-        }, false);
-    }
+    document.getElementById("close").addEventListener("click", (e) => {
+        e.preventDefault()
+        document.getElementById('modal-container').style.display = 'none'
+    }, false);
+
 
     document.getElementById('id_Country').placeholder = 'Search';
     document.getElementById("id_Country").addEventListener("keyup", showSearch, false);
