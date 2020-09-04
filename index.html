@@ -16,7 +16,7 @@
         </a>
     </header>
     <div id='search-bar' class="background">
-        <input type="text" id="id_Country" placeholder="Search " onkeyup="showIndex()">
+        <input type="text" id="id_Country" placeholder="Search" onkeyup="showIndex()">
         <button type="submit" id="search">
             <img src="png/buscando-lupa.png" width="20" height="20">
         </button>
@@ -32,7 +32,54 @@
         <h2 id="not-found" style="display: none;">Search Not Found</h2>
         <div id="modal-container" style="display: none;">
             <div id="details">
-                <table id="table"></table>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" id="Country"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" id="Date"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Confirmed</td>
+                            <td class="digits" id="TConfirmed"></td>
+                        </tr>
+                        <tr>
+                            <td>Total Deaths</td>
+                            <td class="digits" id="TDeaths"></td>
+                        </tr>
+                        <tr>
+                            <td>Total Recovered</td>
+                            <td class=" digits" id="TRecovered"></td>
+                        </tr>
+                        <tr>
+                            <td>New Confirmed</td>
+                            <td class="digits" id="NConfirmed"></td>
+                        </tr>
+                        <tr>
+                            <td>New Deaths</td>
+                            <td class="digits" id="NDeaths"></td>
+                        </tr>
+                        <tr>
+                            <td>New Recovered</td>
+                            <td class="digits" id="NRecovered"></td>
+                        </tr>
+                        <tr>
+                            <td>Death Rate</td>
+                            <td class="digits" id="DeathR"></td>
+                        </tr>
+                        <tr>
+                            <td>Recovery Rate</td>
+                            <td class="digits" id="RecoveryR"></td>
+                        </tr>
+                        <tr>
+                            <td>Current Infected</td>
+                            <td class="digits" id="CInfected"></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <a href="#" id="close" class="background">X</a>
             </div>
         </div>

@@ -82,9 +82,9 @@ function activateLinks() {
 
     document.getElementById("index").addEventListener("click", (e) => {
         e.preventDefault()
-        const objects = document.querySelectorAll(".block p")
+        const objects = document.querySelectorAll(".block")
         for (let object of objects) {
-            block = object.parentNode.style.display = 'block'
+            object.style.display = 'block'
         }
         document.getElementById('id_Country').value = ''
     }, false);
@@ -127,59 +127,24 @@ function showSearch(e) {
     }
     if (results.length == 0) {
         document.getElementById("not-found").style.display = 'block'
-    } else { document.getElementById("not-found").style.display = 'none' }
+    } else {
+        document.getElementById("not-found").style.display = 'none'
+    }
 }
 
 function showDetails(e) {
     e.preventDefault();
     object = countries[e.currentTarget.id]
-    table = `
-        <thead>
-            <tr>
-                <th colspan="2">${object.Country}</th>
-            </tr>
-            <tr>
-                <th colspan="2">${object.Date}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Total Confirmed</td>
-                <td class="digits">${object.Total_Confirmed}</td>
-            </tr>
-            <tr>
-                <td>Total Deaths</td>
-                <td class="digits">${object.Total_Deaths}</td>
-            </tr>
-            <tr>
-                <td>Total Recovered</td>
-                <td class="digits">${object.Total_Recovered}</td>
-            </tr>
-            <tr>
-                <td>New Confirmed</td>
-                <td class="digits">${object.New_Confirmed}</td>
-            </tr>
-            <tr>
-                <td>New Deaths</td>
-                <td class="digits">${object.New_Deaths}</td>
-            </tr>
-            <tr>
-                <td>New Recovered</td>
-                <td class="digits">${object.New_Recovered}</td>
-            </tr>
-            <tr>
-                <td>Death Rate</td>
-                <td class="digits">${object.Death_Rate}%</td>
-            </tr>
-            <tr>
-                <td>Recovery Rate</td>
-                <td class="digits">${object.Recovery_Rate}%</td>
-            </tr>
-            <tr>
-                <td>Current Infected</td>
-                <td class="digits">${object.Current_Infected}</td>
-            </tr>
-        </tbody>`
-    document.getElementById("table").innerHTML = table
+    document.getElementById("Country").textContent = object.Country
+    document.getElementById("Date").textContent = object.Date
+    document.getElementById("TConfirmed").textContent = object.Total_Confirmed
+    document.getElementById("TDeaths").textContent = object.Total_Deaths
+    document.getElementById("TRecovered").textContent = object.Total_Recovered
+    document.getElementById("NConfirmed").textContent = object.New_Confirmed
+    document.getElementById("NDeaths").textContent = object.New_Deaths
+    document.getElementById("NRecovered").textContent = object.New_Recovered
+    document.getElementById("DeathR").textContent = object.Death_Rate
+    document.getElementById("RecoveryR").textContent = object.Recovery_Rate
+    document.getElementById("CInfected").textContent = object.Current_Infected
     document.getElementById("modal-container").style.display = 'block';
 }
