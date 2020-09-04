@@ -70,6 +70,7 @@ body {
     top: 5%;
     left: 0;
     right: 0;
+    z-index: 50;
 }
 
 input[type=text] {
@@ -95,6 +96,7 @@ input[type=submit] {
     justify-content: center;
     align-items: center;
     color: white;
+    z-index: 0;
 }
 
 #start {
