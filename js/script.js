@@ -76,7 +76,6 @@ function activateLinks() {
         document.getElementById('modal-container').style.display = 'none'
     }, false);
 
-    document.getElementById('id_Country').placeholder = 'Search';
     document.getElementById("id_Country").addEventListener("keyup", showSearch, false);
 
     document.getElementById("search").addEventListener("click", showSearch, false);
