@@ -15,6 +15,13 @@ function storage() {
     }
 }
 
+function showIndex() {
+    if (document.getElementById("welcome").style.display != "none") {
+        document.getElementById("welcome").style.display = "none"
+        document.querySelector("body").className = ""
+        document.getElementById("main-content").style.display = "block"
+    }
+}
 const callAPI = async() => {
     try {
         const response = await fetch("https://api.covid19api.com/summary", {
@@ -69,7 +76,6 @@ function activateLinks() {
         document.getElementById('modal-container').style.display = 'none'
     }, false);
 
-
     document.getElementById('id_Country').placeholder = 'Search';
     document.getElementById("id_Country").addEventListener("keyup", showSearch, false);
 
@@ -90,7 +96,7 @@ function createBlocks(array) {
     for (let object of array) {
         html += `
     <div class="block">
-        <p id="${object.id}" class='detail-link'>${object.Country}</p>
+        <p id="${object.id}" class='detail-link background'>${object.Country}</p>
         <ul class="header">
             <li class="header-digits">Total Confirmed</li>
             <li class="header-digits">Total Deaths</li>

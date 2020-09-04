@@ -9,31 +9,36 @@
     <link type='text/css' href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
-    <header id="main-header">
+<body class="background">
+    <header id="main-header" class="background">
         <a id="logo-header" href="#">
             <span class="site-name">COVID-19</span>
         </a>
     </header>
-    <section id="main-content">
-        <a class='normal-link' href="#" id="index">All Countrys</a>
-        <div id='search-bar'>
-            <input type="text" id="id_Country">
-            <button type="submit" id="search">
-                <img src="png/buscando-lupa.png" width="20" height="20">
-            </button>
-        </div>
+    <div id='search-bar' class="background">
+        <input type="text" id="id_Country" onkeyup="showIndex()">
+        <button type="submit" id="search">
+            <img src="png/buscando-lupa.png" width="20" height="20">
+        </button>
+    </div>
+    <section id="welcome">
+        <h1>Welcome to COVID-19 by Country</h1>
+        <h2>Press the button or type in the search bar to start</h2>
+        <input type="button" value="GO" onclick="showIndex()" id="start">
+    </section>
+    <section id="main-content" style="display: none;">
+        <a class='normal-link background' href="#" id="index">All Countrys</a>
         <div id="sub-container"></div>
         <h2 id="not-found" style="display: none;">Search Not Found</h2>
         <div id="modal-container" style="display: none;">
             <div id="details">
                 <table id="table"></table>
-                <a href="#" id="close">X</a>
+                <a href="#" id="close" class="background">X</a>
             </div>
         </div>
-        <a class='normal-link' target='blank' href="https://covid19api.com/">COVID19 API</a>
+        <a class='normal-link background' target='blank' href="https://covid19api.com/">COVID19 API</a>
     </section>
-    <footer id="main-footer">
+    <footer id="main-footer" class="background">
         <div>
             <p>2020 &copy; Cesar Ortiz</p>
         </div>
