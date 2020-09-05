@@ -1,5 +1,13 @@
 var countries;
 
+function showIndex() {
+    if (document.getElementById("welcome").style.display != "none") {
+        document.getElementById("welcome").style.display = "none"
+        document.getElementById("main-content").style.display = "block"
+        document.getElementById("id_Country").removeEventListener("keyup", showIndex, false);
+    }
+}
+
 function storage() {
     if (localStorage.getItem('dataCovid')) {
         var data = JSON.parse(localStorage.getItem('dataCovid'))
@@ -12,14 +20,6 @@ function storage() {
         }
     } else {
         callAPI()
-    }
-}
-
-function showIndex() {
-    if (document.getElementById("welcome").style.display != "none") {
-        document.getElementById("welcome").style.display = "none"
-        document.getElementById("main-content").style.display = "block"
-        document.getElementById("id_Country").removeEventListener("keyup", showIndex, false);
     }
 }
 
@@ -116,11 +116,10 @@ function showSearch(e) {
     const coincidense = countries.filter(object => object.Country.toLowerCase().includes(search))
     const results = coincidense.map(object => String(object.id))
     document.querySelectorAll(".block p").forEach(object => {
-        block = object.parentNode
         if (results.includes(object.id)) {
-            block.style.display = 'block'
+            object.parentNode.style.display = 'block'
         } else {
-            block.style.display = 'none'
+            object.parentNode.style.display = 'none'
         }
     })
     if (results.length < 1) {
