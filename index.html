@@ -9,13 +9,13 @@
     <link type='text/css' href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="background">
+<body>
     <header id="main-header" class="background">
         <a id="logo-header" href="#">
             <span class="site-name">COVID-19</span>
         </a>
     </header>
-    <div id='search-bar' class="background">
+    <div id='search-bar' class="background content-flex">
         <input type="text" id="id_Country" placeholder="Search" onkeyup="showIndex()">
         <button type="submit" id="search">
             <img src="png/buscando-lupa.png" width="20" height="20">
@@ -30,7 +30,7 @@
         <a class='normal-link background' href="#" id="index">All Countrys</a>
         <div id="sub-container"></div>
         <h2 id="not-found" style="display: none;">Search Not Found</h2>
-        <div id="modal-container" style="display: none;">
+        <div id="modal-container" class="content-flex" style="display: none;">
             <div id="details">
                 <table id="table">
                     <thead>

@@ -18,10 +18,11 @@ function storage() {
 function showIndex() {
     if (document.getElementById("welcome").style.display != "none") {
         document.getElementById("welcome").style.display = "none"
-        document.querySelector("body").className = ""
         document.getElementById("main-content").style.display = "block"
+        document.getElementById("id_Country").removeEventListener("keyup", showIndex, false);
     }
 }
+
 const callAPI = async() => {
     try {
         const response = await fetch("https://api.covid19api.com/summary", {
@@ -66,10 +67,9 @@ function showAll() {
 }
 
 function activateLinks() {
-    const objects = document.querySelectorAll(".detail-link")
-    for (let object of objects) {
-        object.addEventListener("click", showDetails, false);
-    }
+    document.querySelectorAll(".detail-link").forEach(object => {
+        object.addEventListener("click", showDetails, false)
+    })
 
     document.getElementById("close").addEventListener("click", (e) => {
         e.preventDefault()
@@ -82,10 +82,9 @@ function activateLinks() {
 
     document.getElementById("index").addEventListener("click", (e) => {
         e.preventDefault()
-        const objects = document.querySelectorAll(".block")
-        for (let object of objects) {
+        document.querySelectorAll(".block").forEach(object => {
             object.style.display = 'block'
-        }
+        })
         document.getElementById('id_Country').value = ''
     }, false);
 }
@@ -116,16 +115,15 @@ function showSearch(e) {
     let search = document.getElementById("id_Country").value.toLowerCase().trim();
     const coincidense = countries.filter(object => object.Country.toLowerCase().includes(search))
     const results = coincidense.map(object => String(object.id))
-    const objects = document.querySelectorAll(".block p")
-    for (let object of objects) {
+    document.querySelectorAll(".block p").forEach(object => {
         block = object.parentNode
         if (results.includes(object.id)) {
             block.style.display = 'block'
         } else {
             block.style.display = 'none'
         }
-    }
-    if (results.length == 0) {
+    })
+    if (results.length < 1) {
         document.getElementById("not-found").style.display = 'block'
     } else {
         document.getElementById("not-found").style.display = 'none'
