@@ -1,96 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0" />
+        <title>Covid-19 By Country</title>
+        <link rel="icon" href="ico/bacterias.ico" />
+        <link type="text/css" href="css/style.css" rel="stylesheet" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0">
-    <title>Covid-19 By Country</title>
-    <link rel="icon" href="ico/bacterias.ico">
-    <link type='text/css' href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-    <header id="main-header" class="background">
-        <a id="logo-header" href="#">
-            <span class="site-name">COVID-19</span>
-        </a>
-    </header>
-    <div id='search-bar' class="background content-flex">
-        <input type="text" id="id_Country" placeholder="Search" onkeyup="showIndex()">
-        <button type="submit" id="search">
-            <img src="png/buscando-lupa.png" width="20" height="20">
-        </button>
-    </div>
-    <section id="welcome">
-        <h1>Welcome to COVID-19 by Country</h1>
-        <h2>Press the button or type in the search bar to start</h2>
-        <input type="button" value="GO" onclick="showIndex()" id="start">
-    </section>
-    <section id="main-content" style="display: none;">
-        <a class='normal-link background' href="#" id="index">All Countrys</a>
-        <div id="sub-container"></div>
-        <h2 id="not-found" style="display: none;">Search Not Found</h2>
-        <div id="modal-container" class="content-flex" style="display: none;">
-            <div id="details">
-                <table id="table">
-                    <thead>
-                        <tr>
-                            <th colspan="2" id="Country"></th>
-                        </tr>
-                        <tr>
-                            <th colspan="2" id="Date"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Total Confirmed</td>
-                            <td class="digits" id="TConfirmed"></td>
-                        </tr>
-                        <tr>
-                            <td>Total Deaths</td>
-                            <td class="digits" id="TDeaths"></td>
-                        </tr>
-                        <tr>
-                            <td>Total Recovered</td>
-                            <td class=" digits" id="TRecovered"></td>
-                        </tr>
-                        <tr>
-                            <td>New Confirmed</td>
-                            <td class="digits" id="NConfirmed"></td>
-                        </tr>
-                        <tr>
-                            <td>New Deaths</td>
-                            <td class="digits" id="NDeaths"></td>
-                        </tr>
-                        <tr>
-                            <td>New Recovered</td>
-                            <td class="digits" id="NRecovered"></td>
-                        </tr>
-                        <tr>
-                            <td>Death Rate</td>
-                            <td class="digits" id="DeathR"></td>
-                        </tr>
-                        <tr>
-                            <td>Recovery Rate</td>
-                            <td class="digits" id="RecoveryR"></td>
-                        </tr>
-                        <tr>
-                            <td>Current Infected</td>
-                            <td class="digits" id="CInfected"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="#" id="close" class="background">X</a>
+    <body>
+        <header id="main-header" class="background">
+            <a id="logo-header" href="#">
+                <span class="site-name">COVID-19</span>
+            </a>
+        </header>
+        <div id="search-bar" class="background content-flex">
+            <input
+                type="text"
+                id="id_Country"
+                placeholder="Search"
+                onkeyup="showIndex()"
+            />
+            <button type="submit" id="search">
+                <img src="png/buscando-lupa.png" width="20" height="20" />
+            </button>
+        </div>
+        <section id="welcome">
+            <h1>Welcome to COVID-19 by Country</h1>
+            <h2>Press the button or type in the search bar to start</h2>
+            <input type="button" value="GO" onclick="showIndex()" id="start" />
+        </section>
+        <section id="main-content" style="display: none">
+            <a class="normal-link background" href="#" id="index"
+                >All Countrys</a
+            >
+            <div id="sub-container">
+                <div class="block">
+                    <p class="detail-link background">-</p>
+                    <ul class="header">
+                        <li class="header-digits">Total Confirmed</li>
+                        <li class="header-digits">Total Deaths</li>
+                        <li class="header-digits">Total Recovered</li>
+                    </ul>
+                    <ul>
+                        <li>-</li>
+                        <li>-</li>
+                        <li>-</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <a class='normal-link background' target='blank' href="https://covid19api.com/">COVID19 API</a>
-    </section>
-    <footer id="main-footer" class="background">
-        <div>
-            <p>2020 &copy; Cesar Ortiz</p>
-        </div>
-    </footer>
-    <script async src="js/script.js" onload="storage()"></script>
-</body>
-
+            <h2 id="not-found" style="display: none">Search Not Found</h2>
+            <div
+                id="modal-container"
+                class="content-flex"
+                style="display: none"
+            >
+                <div id="details">
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2" id="Country"></th>
+                            </tr>
+                            <tr>
+                                <th colspan="2" id="Date"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Total Confirmed</td>
+                                <td class="digits" id="TConfirmed"></td>
+                            </tr>
+                            <tr>
+                                <td>Total Deaths</td>
+                                <td class="digits" id="TDeaths"></td>
+                            </tr>
+                            <tr>
+                                <td>Total Recovered</td>
+                                <td class="digits" id="TRecovered"></td>
+                            </tr>
+                            <tr>
+                                <td>New Confirmed</td>
+                                <td class="digits" id="NConfirmed"></td>
+                            </tr>
+                            <tr>
+                                <td>New Deaths</td>
+                                <td class="digits" id="NDeaths"></td>
+                            </tr>
+                            <tr>
+                                <td>New Recovered</td>
+                                <td class="digits" id="NRecovered"></td>
+                            </tr>
+                            <tr>
+                                <td>Death Rate</td>
+                                <td class="digits" id="DeathR"></td>
+                            </tr>
+                            <tr>
+                                <td>Recovery Rate</td>
+                                <td class="digits" id="RecoveryR"></td>
+                            </tr>
+                            <tr>
+                                <td>Current Infected</td>
+                                <td class="digits" id="CInfected"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#" id="close" class="background">X</a>
+                </div>
+            </div>
+            <a
+                class="normal-link background"
+                target="blank"
+                href="https://covid19api.com/"
+                >COVID19 API</a
+            >
+        </section>
+        <footer id="main-footer" class="background">
+            <div>
+                <p>2020 &copy; Cesar Ortiz</p>
+            </div>
+        </footer>
+        <script async src="js/script.js" onload="storage()"></script>
+    </body>
 </html>
