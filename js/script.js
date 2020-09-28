@@ -1,4 +1,5 @@
 var countries;
+var flags;
 
 function showIndex() {
     if (document.getElementById("welcome").style.display != "none") {
@@ -31,8 +32,23 @@ const callAPI = async () => {
             cache: "no-cache",
         });
         const data = await response.json();
+        await fetchFlags();
         saveResponse(data);
         showAll();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const fetchFlags = async () => {
+    try {
+        const response = await fetch(
+            "https://restcountries.eu/rest/v2/all?fields=alpha2Code;flag"
+        );
+        const data = await response.json();
+        (() => {
+            flags = data;
+        })();
     } catch (error) {
         console.log(error);
     }
@@ -42,6 +58,13 @@ function saveResponse(response) {
     var data = [];
     var iter = 0;
     for (let object of response.Countries) {
+        let getFlag = () => {
+            for (element of flags) {
+                if (element.alpha2Code == object.CountryCode) {
+                    return element.flag;
+                }
+            }
+        };
         data.push({
             Country: object.Country,
             Current_Infected: (
@@ -64,6 +87,7 @@ function saveResponse(response) {
             ).toFixed(2),
             Date: String(object.Date).slice(0, 10),
             id: iter,
+            flag: getFlag(),
         });
         iter++;
     }

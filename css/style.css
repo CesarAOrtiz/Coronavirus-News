@@ -27,13 +27,7 @@ body {
 
 body,
 .background {
-    background: -moz-linear-gradient(left, rgba(2, 102, 189, 1) 0%, rgba(2, 102, 189, 1) 1%, rgba(32, 124, 229, 1) 38%, rgba(7, 126, 230, 1) 55%, rgba(73, 155, 234, 1) 86%, rgba(73, 155, 234, 1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(2, 102, 189, 1)), color-stop(1%, rgba(2, 102, 189, 1)), color-stop(38%, rgba(32, 124, 229, 1)), color-stop(55%, rgba(7, 126, 230, 1)), color-stop(86%, rgba(73, 155, 234, 1)), color-stop(100%, rgba(73, 155, 234, 1)));
-    background: -webkit-linear-gradient(left, rgba(2, 102, 189, 1) 0%, rgba(2, 102, 189, 1) 1%, rgba(32, 124, 229, 1) 38%, rgba(7, 126, 230, 1) 55%, rgba(73, 155, 234, 1) 86%, rgba(73, 155, 234, 1) 100%);
-    background: -o-linear-gradient(left, rgba(2, 102, 189, 1) 0%, rgba(2, 102, 189, 1) 1%, rgba(32, 124, 229, 1) 38%, rgba(7, 126, 230, 1) 55%, rgba(73, 155, 234, 1) 86%, rgba(73, 155, 234, 1) 100%);
-    background: -ms-linear-gradient(left, rgba(2, 102, 189, 1) 0%, rgba(2, 102, 189, 1) 1%, rgba(32, 124, 229, 1) 38%, rgba(7, 126, 230, 1) 55%, rgba(73, 155, 234, 1) 86%, rgba(73, 155, 234, 1) 100%);
     background: linear-gradient(to right, rgba(2, 102, 189, 1) 0%, rgba(2, 102, 189, 1) 1%, rgba(32, 124, 229, 1) 38%, rgba(7, 126, 230, 1) 55%, rgba(73, 155, 234, 1) 86%, rgba(73, 155, 234, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#0266bd', endColorstr='#499bea', GradientType=1);
 }
 
 .content-flex {
@@ -65,8 +59,7 @@ body,
 #search-bar {
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-    width: 90%;
-    max-width: 800px;
+    max-width: 600px;
     margin: 10px auto;
     padding: 5px 0px;
     position: fixed;
@@ -74,16 +67,29 @@ body,
     left: 0;
     right: 0;
     z-index: 50;
+    background: white;
 }
 
 input[type=text] {
-    width: 50%;
+    width: 80%;
+    border-radius: 10px 0px 0px 10px;
+    height: 24px;
 }
 
 input[type=text],
-input[type=submit] {
-    padding: 5px 10px;
+#search {
+    padding: 1px 5px;
     border: none;
+    outline: none;
+}
+
+#search {
+    background: white;
+    border-radius: 0px 10px 10px 0px;
+}
+
+#search:hover {
+    cursor: pointer;
 }
 
 #welcome {
@@ -232,7 +238,6 @@ table {
 
 #main-footer {
     width: 100%;
-    color: white;
     padding: 10px;
     position: fixed;
     bottom: 0;
@@ -242,6 +247,11 @@ table {
 #main-footer div {
     margin: auto;
     text-align: center;
+}
+
+#main-footer a {
+    color: white;
+    text-decoration: none;
 }
 
 .normal-link {
