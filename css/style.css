@@ -1,5 +1,3 @@
-/* Cabecera */
-
 * {
     margin: 0%;
     padding: 0%;
@@ -36,9 +34,6 @@ body,
     align-items: center;
 }
 
-
-/* logo */
-
 #logo-header {
     float: left;
     padding: 10px 0 0 10px;
@@ -52,9 +47,6 @@ body,
     display: block;
     font-size: 1.4em;
 }
-
-
-/* contenedor del cuerpo de la pagina */
 
 #search-bar {
     border-radius: 20px;
@@ -133,9 +125,6 @@ input[type=text],
     border-radius: 20px;
 }
 
-
-/* estructura de la informacion */
-
 h2 {
     display: block;
     text-align: center;
@@ -197,9 +186,6 @@ li {
     text-align: right;
 }
 
-
-/* ventana modal para mostrar mas datos */
-
 #modal-container {
     background-color: rgba(0, 0, 0, .8);
     position: fixed;
@@ -213,8 +199,8 @@ li {
 #details {
     margin: 15% auto;
     background: white;
-    width: 90%;
-    max-width: 800px;
+    width: 80%;
+    max-width: 700px;
     border-radius: 20px 20px 20px 20px;
     z-index: 100;
 }
@@ -222,6 +208,10 @@ li {
 table {
     margin: auto;
     padding: 10px 15px;
+}
+
+table td:nth-child(2) {
+    font-weight: 700;
 }
 
 #close {
@@ -233,9 +223,6 @@ table {
     padding: 10px 15px;
     border-radius: 0px 0px 20px 20px;
 }
-
-
-/* pie de pagina */
 
 #main-footer {
     width: 100%;
@@ -272,6 +259,3 @@ table {
     text-decoration: underline;
     font-weight: bold;
 }
-
-
-/**/
