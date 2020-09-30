@@ -136,7 +136,7 @@ function showSearch(e) {
 
 function showDetails(e) {
     e.preventDefault();
-    object = countries[e.target.parentNode.id];
+    object = countries[e.currentTarget.parentNode.id];
     document.getElementById("Country").textContent = object.Country;
     document.getElementById("Date").textContent = object.Date;
     document.getElementById("TConfirmed").textContent = object.Total_Confirmed;

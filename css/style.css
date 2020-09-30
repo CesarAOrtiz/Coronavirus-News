@@ -137,7 +137,7 @@ h2 {
     margin: 10px;
     display: flex;
     flex-direction: column;
-    transition: all 0.25s;
+    transition: all 0.5s;
     border-radius: 20px 20px 20px 20px;
     background: white;
     border: rgba(0, 0, 0, 0.226) 1px solid;
@@ -199,7 +199,7 @@ li {
 #details {
     margin: 15% auto;
     background: white;
-    width: 80%;
+    width: 90%;
     max-width: 700px;
     border-radius: 20px 20px 20px 20px;
     z-index: 100;
