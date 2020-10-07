@@ -1,33 +1,30 @@
+window.addEventListener("load", callAPI, false);
+
 var countries;
 
 function showIndex() {
-    if (document.getElementById("welcome").style.display != "none") {
-        document.getElementById("welcome").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-        document
-            .getElementById("id_Country")
-            .removeEventListener("keyup", showIndex, false);
-    }
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+    document
+        .getElementById("id_Country")
+        .removeEventListener("keyup", showIndex, false);
 }
 
-const callAPI = async () => {
+async function callAPI() {
     try {
-        const response = await fetch("https://api.covid19api.com/summary", {
-            cache: "no-cache",
-        });
+        const response = await fetch("https://api.covid19api.com/summary");
         const data = await response.json();
-        saveResponse(data);
-        showAll();
-        activateLinks();
+        await saveResponse(data);
+        await showAll();
+        await activateLinks();
     } catch (error) {
         document.getElementById("not-found").style.display = "block";
     }
-};
+}
 
-function saveResponse(response) {
-    var data = [];
-    response.Countries.forEach((object, index) => {
-        data.push({
+async function saveResponse(response) {
+    var data = response.Countries.map((object, index) => {
+        return {
             Total_Confirmed: object.TotalConfirmed.toLocaleString("es-MX"),
             Total_Deaths: object.TotalDeaths.toLocaleString("es-MX"),
             Total_Recovered: object.TotalRecovered.toLocaleString("es-MX"),
@@ -49,14 +46,14 @@ function saveResponse(response) {
             ).toFixed(2),
             Date: String(object.Date).slice(0, 10),
             id: index,
-        });
+        };
     });
     countries = data;
 }
 
-function showAll() {
+async function showAll() {
     let html = "";
-    for (let object of countries) {
+    countries.forEach((object) => {
         html += `
     <div class="block" id="${object.id}">
         <p class='detail-link background'>${object.Country}</p>
@@ -71,11 +68,11 @@ function showAll() {
             <li>${object.Total_Recovered}</li>
         </ul>
     </div>`;
-    }
+    });
     document.getElementById("sub-container").innerHTML = html;
 }
 
-function activateLinks() {
+async function activateLinks() {
     document.querySelectorAll(".detail-link").forEach((object) => {
         object.addEventListener("click", showDetails, false);
     });
@@ -110,7 +107,7 @@ function activateLinks() {
     );
 }
 
-function showSearch(e) {
+async function showSearch(e) {
     e.preventDefault();
     let search = document
         .getElementById("id_Country")
@@ -134,7 +131,7 @@ function showSearch(e) {
     }
 }
 
-function showDetails(e) {
+async function showDetails(e) {
     e.preventDefault();
     object = countries[e.currentTarget.parentNode.id];
     document.getElementById("Country").textContent = object.Country;
